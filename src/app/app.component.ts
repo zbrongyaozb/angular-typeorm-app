@@ -20,9 +20,9 @@ export class AppComponent implements OnInit {
   test() {
     setTimeout(() => {
       const user = new User();
-      user.firstName = 'sada';
+      user.firstName = 'sada' + new Date().getTime();
       user.lastName = 'asdas';
-      user.email = 'sdasd@qq.com';
+      user.email = 'sdasd@qq.com' + new Date().getTime();
       AppDataSource.getRepository(User)
         .save(user)
         .then(() => {
