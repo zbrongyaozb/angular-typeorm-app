@@ -50,6 +50,7 @@ window.addEventListener('DOMContentLoaded', async () => {
       }
       console.log('platform',platform);
 
+      await CapacitorSQLite.copyFromAssets({overwrite:true})
 
       AppDataSource.initialize()
         .then(() => {

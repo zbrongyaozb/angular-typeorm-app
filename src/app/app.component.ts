@@ -1,9 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { DataSource } from 'typeorm';
-import { CapacitorSQLite, SQLiteConnection } from '@capacitor-community/sqlite';
-import { Item } from './entity/item';
+import  { CapacitorSQLite, } from '@capacitor-community/sqlite';
 import { User } from './entity/user';
-import { Capacitor } from '@capacitor/core';
 import { AppDataSource } from 'src/main';
 
 @Component({
@@ -30,6 +27,10 @@ export class AppComponent implements OnInit {
             .find()
             .then((res) => {
               console.log('user', res);
+              CapacitorSQLite.saveToStore({database:'ionic-vue-user'})
+              CapacitorSQLite.exportToJson({database:'ionic-vue-user',jsonexportmode:'full'}).then(res=>{
+                console.log('res,res',res);
+              })
             });
         });
     }, 1000);
